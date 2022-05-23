@@ -4,11 +4,12 @@ var searchHistoryContainer = document.querySelector("#search-history");
 var cityForm = document.querySelector("#city-form");
 
 //Add a function for btnHandler
-var btnHandler = function() {
+var btnHandler = function(event) {
+    event.preventDefault();
 
+console.log("function is listening!")
 
-
-}
+};
 
 
 //Event Listener to btnClick 
