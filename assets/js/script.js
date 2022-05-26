@@ -31,10 +31,24 @@ var getLocationWeather = function(location) {
   .then(function(response) {
     // request was successful
     if (response.ok) {
-      console.log(response);
+      
       response.json().then(function(data) {
         console.log(data);
-        //displayRepos(data, user); CHANGE THIS *******************
+
+        //weather section
+        var createP = document.createElement("p");
+        var temp = (1.8*(data.main.temp-273)) + 32
+        var cityName = data.name
+        createP.textContent = "Current Temperature in " + cityName + ": " + temp + " degrees Farenheit";
+        weatherContainer.appendChild(createP);
+
+        //search history 
+        var createBtn = document.createElement("a");
+        createBtn.classList = "list-item flex-row justify-space-between align-center";
+        createBtn.textContent = cityName;
+        searchHistoryContainer.appendChild(createBtn);
+
+
       });
     } else {
       alert('Error: City Not Found');
