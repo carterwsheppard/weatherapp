@@ -24,8 +24,8 @@ var btnHandler = function(event) {
 };
 
 var getLocationWeather = function(location) {
+     //var apiUrl =  'https://api.openweathermap.org/data/2.5/weather?q='+location+'&appid=f4d9020b0d30765266d6150cdd94784b'
      var apiUrl =  'https://api.openweathermap.org/data/2.5/weather?q='+location+'&appid=f4d9020b0d30765266d6150cdd94784b'
-    
     // make a get request to url
   fetch(apiUrl)
   .then(function(response) {
@@ -38,8 +38,12 @@ var getLocationWeather = function(location) {
         //weather section
         var createP = document.createElement("p");
         var temp = (1.8*(data.main.temp-273)) + 32
-        var cityName = data.name
-        createP.textContent = "Current Temperature in " + cityName + ": " + temp + " degrees Farenheit";
+        var cityName = data.name;
+        var cityWind = data.wind.speed;
+        var cityHumid = data.main.humidity;
+        var currentDate = new Date();
+        createP.innerHTML = cityName+" - "+ currentDate + ":<br/> - Current Temperature: " + temp + " degrees Farenheit"+ "<br/> - Current Windspeed: " + cityWind + " MPH"
+        + "<br/> - Current Humidity: " + cityHumid + "%";
         weatherContainer.appendChild(createP);
 
         //search history 
