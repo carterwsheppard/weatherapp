@@ -23,6 +23,36 @@ var btnHandler = function(event) {
 
 };
 
+var btnHandler2 = function(event) {
+  event.preventDefault();
+
+  //define location variable
+  var location = event.target.getAttribute("id");
+
+  if (location) {
+      getLocationWeather(location);
+  
+      // clear old content
+      cityFormInput.textContent = "";
+      cityFormInput.value = "";
+    } else {
+      alert("Please enter a GitHub username");
+    }
+
+};
+
+var historyClickHandler = function(event) {
+  // get the language attribute from the clicked element
+  var historyCity = event.target.getAttribute("id")
+
+  if (historyCity) {
+    getLocationWeather(historyCity);
+
+    // clear old content
+    //repoContainerEl.textContent = "";
+  }
+};
+
 var getLocationWeather = function(location) {
      //var apiUrl =  'https://api.openweathermap.org/data/2.5/weather?q='+location+'&appid=f4d9020b0d30765266d6150cdd94784b'
      var apiUrl =  'https://api.openweathermap.org/data/2.5/weather?q='+location+'&appid=f4d9020b0d30765266d6150cdd94784b'
@@ -49,6 +79,7 @@ var getLocationWeather = function(location) {
         //search history 
         var createBtn = document.createElement("a");
         createBtn.classList = "list-item flex-row justify-space-between align-center";
+        createBtn.setAttribute("id",cityName)
         createBtn.textContent = cityName;
         searchHistoryContainer.appendChild(createBtn);
 
@@ -67,3 +98,4 @@ var getLocationWeather = function(location) {
 
 //Event Listener to btnClick 
 cityForm.addEventListener("submit", btnHandler);
+searchHistoryContainer.addEventListener("click",btnHandler2);
