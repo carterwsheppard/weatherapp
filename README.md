@@ -21,7 +21,7 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
 
-<img src="./assets/images.weatherapp.png">
+<img src="./assets/images/weatherapp.png">
 
 Of note - for this week / assignment, I did not have time to create my own CSS style sheet from scratch. In order to get best visual results, I used a slightly modified version of the CSS sheet open to our class for this weeks module. 
 
